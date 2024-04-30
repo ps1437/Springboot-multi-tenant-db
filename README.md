@@ -4,6 +4,10 @@
 
 This project demonstrates a header-based routing mechanism for multi-tenancy using Spring Boot. It utilizes a custom routing data source to switch between different data sources based on a header value in incoming requests. This setup allows for dynamic routing of database connections, making it suitable for multi-tenant applications.
 
+Initially, a default data source is created based on the configuration provided in the `application.yml` file. When a request is received, the system checks if the corresponding data source is available based on the request header. If the data source is not available, it dynamically creates a new data source using the configuration specified in the `application.yml` file for the respective header value. The newly created data source is then added to the Spring resolved data sources.
+
+The project also handles multi-thread behavior to ensure thread safety during data source creation and routing.
+
 ## Project Structure
 
 The project is structured as follows:
